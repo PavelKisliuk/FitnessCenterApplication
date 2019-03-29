@@ -63,14 +63,24 @@ public class DrillsList {
 		if ((index > first.size) || (index < 0)) {
 			throw new IndexOutOfBoundsException();
 		} else {
-			DrillsList tempList = this;
-			for (int i = 0; i < (index - 1); i++) {
-				tempList = tempList.next;
-			}
-			DrillsList nextList = tempList.next;
-			tempList.next = nextList.next;
+			AbstractDrill deletingDrill;
 			first.size--;
-			return nextList.drill;
+			if(first.size == 1) {
+				deletingDrill = drill;
+				next = null;
+				drill = null;
+			} else {
+				DrillsList prevList = this;
+				DrillsList currentList = this;
+				for (int i = 0; i < index; i++) {
+					prevList = currentList;
+					currentList = currentList.next;
+				}
+				deletingDrill = currentList.drill;
+
+				prevList.next = currentList.next;
+			}
+			return deletingDrill;
 		}
 	}
 
@@ -78,19 +88,22 @@ public class DrillsList {
 		if ((index > first.size) || (index < 0)) {
 			throw new IndexOutOfBoundsException();
 		} else {
-			DrillsList tempList = this;
-			for (int i = 0; i < index; i++) {
-				tempList = tempList.next;
-			}
-
-			DrillsList oldNext = tempList.next;
-
-			tempList.next = new DrillsList(drill);
-			tempList.first = first;
 			first.size++;
-
-			tempList = tempList.next;
-			tempList.next = oldNext;
+			if(index == 0) {
+				DrillsList nextList = next;
+				next = new DrillsList(this.drill);
+				next.next = nextList;
+				this.drill = drill;
+			} else {
+				DrillsList prevList = this;
+				DrillsList currentList = this;
+				for (int i = 0; i < index; i++) {
+					prevList = currentList;
+					currentList = currentList.next;
+				}
+				prevList.next = new DrillsList(drill);
+				prevList.next.next = currentList;
+			}
 		}
 	}
 

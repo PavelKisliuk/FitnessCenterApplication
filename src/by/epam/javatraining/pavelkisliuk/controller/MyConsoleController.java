@@ -20,6 +20,7 @@ public class MyConsoleController {
 	DrillsList list;
 	AddWindowController addWindowController;
 	DeleteWindowController deleteWindowController;
+	OnTopWindowController onTopWindowController;
 
 	@FXML
 	private TextArea mainTextArea;
@@ -47,6 +48,7 @@ public class MyConsoleController {
 		mainTextArea.textProperty().addListener((ChangeListener<Object>) (observable, oldValue, newValue) ->
 				mainTextArea.setScrollTop(Double.MAX_VALUE));
 		addButton.setOnAction(actionEvent -> addAction());
+		onTopButton.setOnAction(actionEvent -> onTopAction());
 		deleteButton.setOnAction(actionEvent -> deleteAction());
 		showButton.setOnAction(actionEvent -> mainTextArea.appendText(Trainer.show(list)));
 		clearButton.setOnAction(actionEvent -> clear());
@@ -78,6 +80,10 @@ public class MyConsoleController {
 				case "Delete window":
 					deleteWindowController = fxmlLoader.getController();
 					deleteWindowController.setSize(list.size());
+					break;
+				case "On Top":
+					onTopWindowController = fxmlLoader.getController();
+					onTopWindowController.setSize(list.size());
 					break;
 			}
 
@@ -131,6 +137,21 @@ public class MyConsoleController {
 
 		setButtons();
 	}
+
+	private void onTopAction() {
+		String title = "On Top";
+		String path = "/by/epam/javatraining/pavelkisliuk/view/OnTopWindow.fxml";
+		openWindow(path, title);
+
+		if (!(onTopWindowController.isCancel())) {
+			Trainer.onPosition(list, list.get(onTopWindowController.getIndex()),
+					0);
+			Trainer.remove(list, (onTopWindowController.getIndex() + 1));
+		}
+
+		setButtons();
+	}
+
 
 	private void setButtons() {
 		if (list.size() > 0) {

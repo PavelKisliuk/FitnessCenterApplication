@@ -29,28 +29,26 @@ public class Trainer{
 		drill.setMuscleGroup(muscleGroup);
 	}
 
-	public static void onPosition(DrillsList list, int positionIndex, int elementIndex) {
+	public static void exchange(DrillsList list, int lastPos, int newPos) {
 		if(list == null) {
 			throw new NullPointerException();
-		} else if((positionIndex < 0) || (positionIndex > list.size()) &&
-				(elementIndex < 0) || (elementIndex > list.size())) {
+		} else if((lastPos < 0) || (lastPos > list.size()) &&
+				(newPos < 0) || (newPos > list.size())) {
 			throw new IndexOutOfBoundsException();
 		} else {
-			AbstractDrill temp = list.get(elementIndex);
-			list.insert(temp, positionIndex);
-			list.remove(elementIndex);
+			AbstractDrill temp = list.get(lastPos);
+			list.set(list.get(newPos), lastPos);
+			list.set(temp, newPos);
 		}
 	}
 
-	public static AbstractDrill exchange(DrillsList list, AbstractDrill drill, int index) {
-		if((list == null) || (drill == null)) {
+	public static void onPosition(DrillsList list, AbstractDrill drill, int pos) {
+		if(list == null) {
 			throw new NullPointerException();
-		} else if((index < 0) || (index > list.size())) {
+		} else if((pos < 0) || (pos > list.size())) {
 			throw new IndexOutOfBoundsException();
 		} else {
-			AbstractDrill old = list.get(index);
-			list.set(drill, index);
-			return old;
+			list.insert(drill, pos);
 		}
 	}
 
