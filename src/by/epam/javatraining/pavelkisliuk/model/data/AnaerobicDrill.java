@@ -94,4 +94,20 @@ public class AnaerobicDrill extends AbstractDrill {
 	public void setRestPeriod(int restPeriod) {
 		this.restPeriod = restPeriod;
 	}
+
+	@Override
+	public String toString() {
+		return "	AnaerobicDrill:" +
+				"\n		Drill name =" + drillName +
+				"\n		SetPerExercise =" + setPerExercise  +
+				"\n		Rest period =" + restPeriod  +
+				"\n		Necessary repeat number =" + necessaryRepeatNumber  +
+				"\n		Realize repeat number =" + realizeRepeatNumber +
+				"\n		Realize repeat number with help =" + realizeRepeatNumberHelp +
+				"\n		Working weight =" + workingWeight +
+				"\n		Static-dynamic =" + staticDynamic +
+				"\n		Pumping =" + pumping +
+				"\n		Muscle group =" + muscleGroup +
+				"\n----------------------------------------------------------------------------\n";
+	}
 }
