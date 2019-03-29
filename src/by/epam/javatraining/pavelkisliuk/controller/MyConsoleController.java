@@ -21,6 +21,7 @@ public class MyConsoleController {
 	AddWindowController addWindowController;
 	DeleteWindowController deleteWindowController;
 	OnTopWindowController onTopWindowController;
+	ExchangeWindowController exchangeWindowController;
 
 	@FXML
 	private TextArea mainTextArea;
@@ -49,6 +50,7 @@ public class MyConsoleController {
 				mainTextArea.setScrollTop(Double.MAX_VALUE));
 		addButton.setOnAction(actionEvent -> addAction());
 		onTopButton.setOnAction(actionEvent -> onTopAction());
+		exchangeButton.setOnAction(actionEvent -> exchangeAction());
 		deleteButton.setOnAction(actionEvent -> deleteAction());
 		showButton.setOnAction(actionEvent -> mainTextArea.appendText(Trainer.show(list)));
 		clearButton.setOnAction(actionEvent -> clear());
@@ -74,16 +76,20 @@ public class MyConsoleController {
 			Parent fxmlDialogueWindow = fxmlLoader.load();
 
 			switch (title) {
-				case "Add window":
+				case "Add":
 					addWindowController = fxmlLoader.getController();
 					break;
-				case "Delete window":
+				case "Delete":
 					deleteWindowController = fxmlLoader.getController();
 					deleteWindowController.setSize(list.size());
 					break;
 				case "On Top":
 					onTopWindowController = fxmlLoader.getController();
 					onTopWindowController.setSize(list.size());
+					break;
+				case "Exchange":
+					exchangeWindowController = fxmlLoader.getController();
+					exchangeWindowController.setSize(list.size());
 					break;
 			}
 
@@ -105,7 +111,7 @@ public class MyConsoleController {
 	}
 
 	private void addAction() {
-		String title = "Add window";
+		String title = "Add";
 		String path = "/by/epam/javatraining/pavelkisliuk/view/AddWindow.fxml";
 		openWindow(path, title);
 
@@ -127,7 +133,7 @@ public class MyConsoleController {
 	}
 
 	private void deleteAction() {
-		String title = "Delete window";
+		String title = "Delete";
 		String path = "/by/epam/javatraining/pavelkisliuk/view/DeleteWindow.fxml";
 		openWindow(path, title);
 
@@ -147,6 +153,19 @@ public class MyConsoleController {
 			Trainer.onPosition(list, list.get(onTopWindowController.getIndex()),
 					0);
 			Trainer.remove(list, (onTopWindowController.getIndex() + 1));
+		}
+
+		setButtons();
+	}
+
+	private void exchangeAction() {
+		String title = "Exchange";
+		String path = "/by/epam/javatraining/pavelkisliuk/view/ExchangeWindow.fxml";
+		openWindow(path, title);
+
+		if (!(exchangeWindowController.isCancel())) {
+			Trainer.exchange(list, exchangeWindowController.getIndexA(),
+					exchangeWindowController.getIndexB());
 		}
 
 		setButtons();

@@ -64,11 +64,14 @@ public class DrillsList {
 			throw new IndexOutOfBoundsException();
 		} else {
 			AbstractDrill deletingDrill;
-			first.size--;
-			if(first.size == 1) {
+			if (first.size == 1) {
 				deletingDrill = drill;
 				next = null;
 				drill = null;
+			} else if (index == 0) {
+				deletingDrill = drill;
+				drill = next.drill;
+				next = next.next;
 			} else {
 				DrillsList prevList = this;
 				DrillsList currentList = this;
@@ -80,6 +83,7 @@ public class DrillsList {
 
 				prevList.next = currentList.next;
 			}
+			first.size--;
 			return deletingDrill;
 		}
 	}
@@ -89,7 +93,7 @@ public class DrillsList {
 			throw new IndexOutOfBoundsException();
 		} else {
 			first.size++;
-			if(index == 0) {
+			if (index == 0) {
 				DrillsList nextList = next;
 				next = new DrillsList(this.drill);
 				next.next = nextList;
