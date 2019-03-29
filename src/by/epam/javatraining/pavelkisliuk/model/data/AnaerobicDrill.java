@@ -1,6 +1,31 @@
 package by.epam.javatraining.pavelkisliuk.model.data;
 
 public class AnaerobicDrill extends AbstractDrill {
+	public enum MusclesGroup {
+		BREAST_GROUP("Breast"),
+		BACK_GROUP("Back"),
+		SHOULDERS_GROUP("Shoulders"),
+		LEGS_GROUP("Legs"),
+		HANDS_GROUP("Hands"),
+		STOMACH_GROUP("Stomach");
+
+		private String groupName;
+
+		MusclesGroup(String groupName) {
+			this.groupName = groupName;
+		}
+
+		public String get() {
+			return groupName;
+		}
+
+		@Override
+		public String toString() {
+			return groupName;
+		}
+	}
+
+
 	private int necessaryRepeatNumber;
 	private int realizeRepeatNumber;
 	private int realizeRepeatNumberHelp;
@@ -63,36 +88,6 @@ public class AnaerobicDrill extends AbstractDrill {
 
 	public void setMuscleGroup(MusclesGroup muscleGroup) {
 		this.muscleGroup = muscleGroup;
-	}
-
-	@Override
-	public String getDrillName() {
-		return drillName;
-	}
-
-	@Override
-	public void setDrillName(String drillName) {
-		this.drillName = drillName;
-	}
-
-	@Override
-	public int getSetPerExercise() {
-		return setPerExercise;
-	}
-
-	@Override
-	public void setSetPerExercise(int setPerExercise) {
-		this.setPerExercise = setPerExercise;
-	}
-
-	@Override
-	public int getRestPeriod() {
-		return restPeriod;
-	}
-
-	@Override
-	public void setRestPeriod(int restPeriod) {
-		this.restPeriod = restPeriod;
 	}
 
 	@Override

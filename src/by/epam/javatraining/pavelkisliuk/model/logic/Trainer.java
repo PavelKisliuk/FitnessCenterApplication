@@ -3,7 +3,6 @@ package by.epam.javatraining.pavelkisliuk.model.logic;
 import by.epam.javatraining.pavelkisliuk.model.data.AbstractDrill;
 import by.epam.javatraining.pavelkisliuk.model.data.AerobicDrill;
 import by.epam.javatraining.pavelkisliuk.model.data.AnaerobicDrill;
-import by.epam.javatraining.pavelkisliuk.model.data.MusclesGroup;
 import by.epam.javatraining.pavelkisliuk.util.DrillsList;
 
 public class Trainer{
@@ -18,7 +17,7 @@ public class Trainer{
 
 	public static void initDrill(AnaerobicDrill drill, String drillName, int setPerExercise, int restPeriod,
 						  int necessaryRepeatNumber, int workingWeight, boolean staticDynamic,
-						  boolean pumping, MusclesGroup muscleGroup) {
+						  boolean pumping, AnaerobicDrill.MusclesGroup muscleGroup) {
 		drill.setDrillName(drillName);
 		drill.setSetPerExercise(setPerExercise);
 		drill.setRestPeriod(restPeriod);

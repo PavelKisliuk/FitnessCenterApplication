@@ -1,6 +1,10 @@
 package by.epam.javatraining.pavelkisliuk.model.data;
 
 public class Running {
+	public enum RunType {
+		JOGTROT, AVERAGE, QUICK, CHANGEABLE, SHUTTLE, SIDEWAYS
+	}
+
 	private RunType runType;
 	private int distance;
 

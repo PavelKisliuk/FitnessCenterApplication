@@ -9,12 +9,27 @@ public abstract class AbstractDrill {
 
 	}
 
-	public abstract String getDrillName();
-	public abstract void setDrillName(String drillName);
+	public String getDrillName() {
+		return drillName;
+	}
 
-	public abstract int getSetPerExercise();
-	public abstract void setSetPerExercise(int setPerExercise);
+	public void setDrillName(String drillName) {
+		this.drillName = drillName;
+	}
 
-	public abstract int getRestPeriod();
-	public abstract void setRestPeriod(int restPeriod);
+	public int getSetPerExercise() {
+		return setPerExercise;
+	}
+
+	public void setSetPerExercise(int setPerExercise) {
+		this.setPerExercise = setPerExercise;
+	}
+
+	public int getRestPeriod() {
+		return restPeriod;
+	}
+
+	public void setRestPeriod(int restPeriod) {
+		this.restPeriod = restPeriod;
+	}
 }

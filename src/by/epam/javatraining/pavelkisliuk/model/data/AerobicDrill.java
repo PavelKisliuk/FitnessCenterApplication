@@ -22,34 +22,4 @@ public class AerobicDrill extends AbstractDrill {
 	public void setExecutionSpeed(int executionSpeed) {
 		this.executionSpeed = executionSpeed;
 	}
-
-	@Override
-	public String getDrillName() {
-		return drillName;
-	}
-
-	@Override
-	public void setDrillName(String drillName) {
-		this.drillName = drillName;
-	}
-
-	@Override
-	public int getSetPerExercise() {
-		return setPerExercise;
-	}
-
-	@Override
-	public void setSetPerExercise(int setPerExercise) {
-		this.setPerExercise = setPerExercise;
-	}
-
-	@Override
-	public int getRestPeriod() {
-		return restPeriod;
-	}
-
-	@Override
-	public void setRestPeriod(int restPeriod) {
-		this.restPeriod = restPeriod;
-	}
 }

@@ -1,8 +1,7 @@
 package by.epam.javatraining.pavelkisliuk.controller;
 
-import by.epam.javatraining.pavelkisliuk.model.data.MusclesGroup;
+import by.epam.javatraining.pavelkisliuk.model.data.AnaerobicDrill;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -17,7 +16,7 @@ public class AddWindowController {
 	private int rest;
 	private int repeats;
 	private int weight;
-	private MusclesGroup muscle;
+	private AnaerobicDrill.MusclesGroup muscle;
 	private boolean statDynam;
 	private boolean pump;
 
@@ -37,7 +36,7 @@ public class AddWindowController {
 	private TextField weightTextField;
 
 	@FXML
-	private ComboBox<String> muscleComboBox;
+	private ComboBox<AnaerobicDrill.MusclesGroup> muscleComboBox;
 
 	@FXML
 	private ToggleGroup DrillGroup;
@@ -61,8 +60,7 @@ public class AddWindowController {
 		rest = Integer.valueOf(restTextField.getText());
 		repeats = Integer.valueOf(repeatsTextField.getText());
 		weight = Integer.valueOf(weightTextField.getText());
-//		muscle = muscleComboBox.getValue();
-		muscle = null;
+		muscle = muscleComboBox.getValue();
 		statDynam = (Boolean)statRadioButton.getUserData();
 		pump = (Boolean)pumpRadioButton.getUserData();
 
@@ -113,6 +111,8 @@ public class AddWindowController {
 				checkAllTextField());
 		weightTextField.textProperty().addListener((observable, oldValue, newValue) ->
 				checkAllTextField());
+		muscleComboBox.setItems(FXCollections.observableArrayList(AnaerobicDrill.MusclesGroup.values()));
+		muscleComboBox.setValue(AnaerobicDrill.MusclesGroup.BREAST_GROUP);
 	}
 
 	public boolean isCancel() {
@@ -164,7 +164,7 @@ public class AddWindowController {
 		return weight;
 	}
 
-	public MusclesGroup getMuscle() {
+	public AnaerobicDrill.MusclesGroup getMuscle() {
 		return muscle;
 	}
 
