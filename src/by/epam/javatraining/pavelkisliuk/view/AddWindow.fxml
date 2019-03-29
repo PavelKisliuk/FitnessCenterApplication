@@ -95,7 +95,7 @@
         </VBox>
       <HBox alignment="CENTER" spacing="50.0">
          <children>
-              <Button defaultButton="true" mnemonicParsing="false" onAction="#oKOnAction" text="OK" />
+              <Button fx:id="okButton" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#okOnAction" text="OK" />
             <Button mnemonicParsing="false" onAction="#cancelButtonOnAction" text="Cancel" />
          </children>
       </HBox>

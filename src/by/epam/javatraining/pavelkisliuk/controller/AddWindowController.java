@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class AddWindowController {
@@ -55,7 +52,10 @@ public class AddWindowController {
 	private RadioButton pumpRadioButton;
 
 	@FXML
-	void oKOnAction(ActionEvent event) {
+	private Button okButton;
+
+	@FXML
+	void okOnAction(ActionEvent event) {
 		name = nameTextField.getText();
 		set = Integer.valueOf(setTextField.getText());
 		rest = Integer.valueOf(restTextField.getText());
@@ -105,11 +105,42 @@ public class AddWindowController {
 			statRadioButton.setUserData(false);
 		});
 		//--------------------------------------------------------------
-
+		setTextField.textProperty().addListener((observable, oldValue, newValue) ->
+				checkAllTextField());
+		restTextField.textProperty().addListener((observable, oldValue, newValue) ->
+				checkAllTextField());
+		repeatsTextField.textProperty().addListener((observable, oldValue, newValue) ->
+				checkAllTextField());
+		weightTextField.textProperty().addListener((observable, oldValue, newValue) ->
+				checkAllTextField());
 	}
 
 	public boolean isCancel() {
 		return cancel;
+	}
+
+	private void checkAllTextField() {
+		if((isCorrectInput(setTextField.getText())) &&
+				(isCorrectInput(restTextField.getText())) &&
+				(isCorrectInput(repeatsTextField.getText())) &&
+				(isCorrectInput(weightTextField.getText()))) {
+			okButton.setDisable(false);
+		} else {
+			okButton.setDisable(true);
+		}
+	}
+
+	private boolean isCorrectInput(String str) {
+		if ((str.length() == 0) ||
+				(str.charAt(0) == '0')) {
+			return false;
+		}
+		for (int i = 0; i < str.length(); i++) {
+			if (!(Character.isDigit(str.charAt(i)))) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 
