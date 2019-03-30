@@ -8,8 +8,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-	public void start(Stage primaryStage) throws Exception
-	{
+	public void start(Stage primaryStage) throws Exception {
 		String title = "Main Task 2 Window";
 		String path = "view\\MyConsole.fxml";
 		//primaryStage adjustment
