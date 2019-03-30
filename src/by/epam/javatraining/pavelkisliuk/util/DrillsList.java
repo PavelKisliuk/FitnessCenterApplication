@@ -58,7 +58,6 @@ public class DrillsList {
 		}
 	}
 
-	//can't delete first element
 	public AbstractDrill remove(int index) {
 		if ((index > first.size) || (index < 0)) {
 			throw new IndexOutOfBoundsException();

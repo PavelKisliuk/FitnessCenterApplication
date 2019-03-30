@@ -1,12 +1,17 @@
 package by.epam.javatraining.pavelkisliuk.model.data;
 
 public abstract class AbstractDrill {
-	protected String drillName;
-	protected int setPerExercise;
-	protected int restPeriod;
+	private String drillName;
+	private int setPerExercise;
+	private int restPeriod;
 
 	protected AbstractDrill() {
+	}
 
+	protected AbstractDrill(String drillName, int setPerExercise, int restPeriod) {
+		this.drillName = drillName;
+		this.setPerExercise = setPerExercise;
+		this.restPeriod = restPeriod;
 	}
 
 	public String getDrillName() {

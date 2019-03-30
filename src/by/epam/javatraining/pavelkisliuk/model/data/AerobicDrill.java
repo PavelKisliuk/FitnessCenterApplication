@@ -7,6 +7,20 @@ public class AerobicDrill extends AbstractDrill {
 	public AerobicDrill() {
 	}
 
+	public AerobicDrill(String drillName, int setPerExercise, int restPeriod,
+						int executionTime, int executionSpeed) {
+		super(drillName, setPerExercise, restPeriod);
+		this.executionTime = executionTime;
+		this.executionSpeed = executionSpeed;
+	}
+
+	public AerobicDrill(AerobicDrill aerobicDrill) {
+		super((new String(aerobicDrill.getDrillName())), aerobicDrill.getSetPerExercise(),
+				aerobicDrill.getRestPeriod());
+		this.executionTime = aerobicDrill.executionTime;
+		this.executionSpeed = aerobicDrill.executionSpeed;
+	}
+
 	public int getExecutionTime() {
 		return executionTime;
 	}

@@ -6,6 +6,10 @@ import by.epam.javatraining.pavelkisliuk.model.data.AnaerobicDrill;
 import by.epam.javatraining.pavelkisliuk.util.DrillsList;
 
 public class Trainer{
+	// Suppresses default constructor, ensuring non-instantiability.
+	private Trainer() {
+	}
+
 	public static void initDrill(AerobicDrill drill, String drillName, int setPerExercise, int restPeriod,
 						  int executionTime, int executionSpeed) {
 		drill.setDrillName(drillName);

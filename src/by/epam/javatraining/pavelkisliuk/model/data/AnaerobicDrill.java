@@ -25,7 +25,6 @@ public class AnaerobicDrill extends AbstractDrill {
 		}
 	}
 
-
 	private int necessaryRepeatNumber;
 	private int realizeRepeatNumber;
 	private int realizeRepeatNumberHelp;
@@ -33,6 +32,36 @@ public class AnaerobicDrill extends AbstractDrill {
 	private boolean staticDynamic;
 	private boolean pumping;
 	private MusclesGroup muscleGroup;
+
+
+	public AnaerobicDrill() {
+	}
+
+	public AnaerobicDrill(String drillName, int setPerExercise, int restPeriod,
+						int necessaryRepeatNumber, int realizeRepeatNumber, int realizeRepeatNumberHelp,
+						  int workingWeight, boolean staticDynamic, boolean pumping,
+						  MusclesGroup muscleGroup) {
+		super(drillName, setPerExercise, restPeriod);
+		this.necessaryRepeatNumber = necessaryRepeatNumber;
+		this.realizeRepeatNumber = realizeRepeatNumber;
+		this.realizeRepeatNumberHelp = realizeRepeatNumberHelp;
+		this.workingWeight = workingWeight;
+		this.staticDynamic = staticDynamic;
+		this.pumping = pumping;
+		this.muscleGroup = muscleGroup;
+	}
+
+	public AnaerobicDrill(AnaerobicDrill anaerobicDrill) {
+		super((new String(anaerobicDrill.getDrillName())), anaerobicDrill.getSetPerExercise(),
+				anaerobicDrill.getRestPeriod());
+		this.necessaryRepeatNumber = anaerobicDrill.necessaryRepeatNumber;
+		this.realizeRepeatNumber = anaerobicDrill.realizeRepeatNumber;
+		this.realizeRepeatNumberHelp = anaerobicDrill.realizeRepeatNumberHelp;
+		this.workingWeight = anaerobicDrill.workingWeight;
+		this.staticDynamic = anaerobicDrill.staticDynamic;
+		this.pumping = anaerobicDrill.pumping;
+		this.muscleGroup = anaerobicDrill.muscleGroup;
+	}
 
 	public int getNecessaryRepeatNumber() {
 		return necessaryRepeatNumber;
@@ -93,9 +122,9 @@ public class AnaerobicDrill extends AbstractDrill {
 	@Override
 	public String toString() {
 		return "	AnaerobicDrill:" +
-				"\n		Drill name =" + drillName +
-				"\n		SetPerExercise =" + setPerExercise  +
-				"\n		Rest period =" + restPeriod  +
+				"\n		Drill name =" + getDrillName() +
+				"\n		SetPerExercise =" + getSetPerExercise()  +
+				"\n		Rest period =" + getRestPeriod()  +
 				"\n		Necessary repeat number =" + necessaryRepeatNumber  +
 				"\n		Realize repeat number =" + realizeRepeatNumber +
 				"\n		Realize repeat number with help =" + realizeRepeatNumberHelp +
