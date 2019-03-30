@@ -1,4 +1,6 @@
-package by.epam.javatraining.pavelkisliuk.model.data;
+package by.epam.javatraining.pavelkisliuk.model.data.aerobic;
+
+import by.epam.javatraining.pavelkisliuk.model.data.AbstractDrill;
 
 public class AerobicDrill extends AbstractDrill {
 	private int executionTime;

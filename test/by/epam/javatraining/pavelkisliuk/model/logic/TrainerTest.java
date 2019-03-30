@@ -1,11 +1,9 @@
 package by.epam.javatraining.pavelkisliuk.model.logic;
 
-import by.epam.javatraining.pavelkisliuk.model.data.AerobicDrill;
-import by.epam.javatraining.pavelkisliuk.model.data.AnaerobicDrill;
+import by.epam.javatraining.pavelkisliuk.model.data.aerobic.AerobicDrill;
+import by.epam.javatraining.pavelkisliuk.model.data.anaerobic.AnaerobicDrill;
 import by.epam.javatraining.pavelkisliuk.util.DrillsList;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class TrainerTest {
 

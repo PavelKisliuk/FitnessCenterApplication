@@ -1,6 +1,6 @@
 package by.epam.javatraining.pavelkisliuk.controller;
 
-import by.epam.javatraining.pavelkisliuk.model.data.AnaerobicDrill;
+import by.epam.javatraining.pavelkisliuk.model.data.anaerobic.AnaerobicDrill;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

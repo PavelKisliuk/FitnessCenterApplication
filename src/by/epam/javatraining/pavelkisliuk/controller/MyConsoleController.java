@@ -1,6 +1,6 @@
 package by.epam.javatraining.pavelkisliuk.controller;
 
-import by.epam.javatraining.pavelkisliuk.model.data.AnaerobicDrill;
+import by.epam.javatraining.pavelkisliuk.model.data.anaerobic.AnaerobicDrill;
 import by.epam.javatraining.pavelkisliuk.model.logic.Trainer;
 import by.epam.javatraining.pavelkisliuk.util.DrillsList;
 import javafx.beans.value.ChangeListener;

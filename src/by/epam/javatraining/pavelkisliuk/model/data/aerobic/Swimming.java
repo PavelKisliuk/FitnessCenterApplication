@@ -1,4 +1,4 @@
-package by.epam.javatraining.pavelkisliuk.model.data;
+package by.epam.javatraining.pavelkisliuk.model.data.aerobic;
 
 public class Swimming extends AerobicDrill {
 	public enum SwimType {

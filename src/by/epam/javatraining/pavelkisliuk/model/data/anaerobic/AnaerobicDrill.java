@@ -1,4 +1,6 @@
-package by.epam.javatraining.pavelkisliuk.model.data;
+package by.epam.javatraining.pavelkisliuk.model.data.anaerobic;
+
+import by.epam.javatraining.pavelkisliuk.model.data.AbstractDrill;
 
 public class AnaerobicDrill extends AbstractDrill {
 	public enum MusclesGroup {
