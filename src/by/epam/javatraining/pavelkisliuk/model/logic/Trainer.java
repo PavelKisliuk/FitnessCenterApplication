@@ -12,6 +12,9 @@ public class Trainer{
 
 	public static void initDrill(AerobicDrill drill, String drillName, int setPerExercise, int restPeriod,
 						  int executionTime, int executionSpeed) {
+		if((drill == null) || (drillName == null)) {
+			throw new NullPointerException();
+		}
 		drill.setDrillName(drillName);
 		drill.setSetPerExercise(setPerExercise);
 		drill.setRestPeriod(restPeriod);
@@ -22,6 +25,9 @@ public class Trainer{
 	public static void initDrill(AnaerobicDrill drill, String drillName, int setPerExercise, int restPeriod,
 						  int necessaryRepeatNumber, int workingWeight, boolean staticDynamic,
 						  boolean pumping, AnaerobicDrill.MusclesGroup muscleGroup) {
+		if((drill == null) || (drillName == null) || (muscleGroup == null)) {
+			throw new NullPointerException();
+		}
 		drill.setDrillName(drillName);
 		drill.setSetPerExercise(setPerExercise);
 		drill.setRestPeriod(restPeriod);
@@ -46,7 +52,7 @@ public class Trainer{
 	}
 
 	public static void onPosition(DrillsList list, AbstractDrill drill, int pos) {
-		if(list == null) {
+		if((list == null) || (drill == null)) {
 			throw new NullPointerException();
 		} else if((pos < 0) || (pos > list.size())) {
 			throw new IndexOutOfBoundsException();
@@ -64,11 +70,20 @@ public class Trainer{
 	}
 
 	public static void remove(DrillsList list, int index) {
-		list.remove(index);
+		if(list == null) {
+			throw new NullPointerException();
+		}else if((index < 0) || (index > list.size())) {
+			throw new IndexOutOfBoundsException();
+		} else {
+			list.remove(index);
+		}
 	}
 
 	public static String show(DrillsList list)
 	{
+		if(list == null) {
+			throw new NullPointerException();
+		}
 		StringBuilder str = new StringBuilder();
 		str.append("-------------------------------------------------------------\n").
 				append("-------------------------------------------------------------List:\n");
