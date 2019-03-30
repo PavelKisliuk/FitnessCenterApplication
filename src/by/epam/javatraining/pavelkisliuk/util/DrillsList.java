@@ -1,22 +1,83 @@
+/*
+ * By Pavel Kisliuk, 30.03.2019
+ * This is class for education and nothing rights don't reserved.
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 package by.epam.javatraining.pavelkisliuk.util;
 
 import by.epam.javatraining.pavelkisliuk.model.data.AbstractDrill;
 
+/**
+ * The {@code DrillsList} class-container fot {@code AbstractDrill}
+ *
+ * <p>This class store elements of {@code AbstractDrill} type, and it's subclasses
+ *
+ * @author Kisliuk Pavel Sergeevich
+ * @since 1.0
+ */
+
 public class DrillsList {
+	/**
+	 * Size of List
+	 */
 	private int size;
 
+	/**
+	 * Pointer to first element of List
+	 */
 	private DrillsList first;
+
+	/**
+	 * Pointer to next element of List
+	 */
 	private DrillsList next;
+
+	/**
+	 * Data in List
+	 */
 	private AbstractDrill drill;
 
+	/**
+	 * Default constructor
+	 */
 	public DrillsList() {
 		first = this;
 	}
 
+	/**
+	 * Parameterized constructor
+	 *
+	 * @param drill is data for storing
+	 */
 	public DrillsList(AbstractDrill drill) {
 		this.drill = drill;
 	}
 
+	/**
+	 * Add data to List
+	 *
+	 * @param drill is data for storing
+	 */
 	public void add(AbstractDrill drill) {
 		if (this.drill != null) {
 			DrillsList tempList = this;
@@ -34,6 +95,12 @@ public class DrillsList {
 		}
 	}
 
+	/**
+	 * Get data from List
+	 *
+	 * @param index of specify element
+	 * @return specify data from list
+	 */
 	public AbstractDrill get(int index) {
 		if ((index > first.size) || (index < 0)) {
 			throw new IndexOutOfBoundsException();
@@ -46,6 +113,13 @@ public class DrillsList {
 		}
 	}
 
+	/**
+	 * Set specify data on specify position
+	 * Previous data on this position are lost
+	 *
+	 * @param drill is data for storing
+	 * @param index is specify position
+	 */
 	public void set(AbstractDrill drill, int index) {
 		if ((index > first.size) || (index < 0)) {
 			throw new IndexOutOfBoundsException();
@@ -58,6 +132,12 @@ public class DrillsList {
 		}
 	}
 
+	/**
+	 * Delete data from list
+	 *
+	 * @param index of deleting element
+	 * @return deleting element
+	 */
 	public AbstractDrill remove(int index) {
 		if ((index > first.size) || (index < 0)) {
 			throw new IndexOutOfBoundsException();
@@ -87,6 +167,14 @@ public class DrillsList {
 		}
 	}
 
+	/**
+	 * Set specify data on specify position
+	 * Previous data on this position are NOT lost
+	 * Previous data move one next position
+	 *
+	 * @param drill is data for storing
+	 * @param index is specify position
+	 */
 	public void insert(AbstractDrill drill, int index) {
 		if ((index > first.size) || (index < 0)) {
 			throw new IndexOutOfBoundsException();
@@ -110,6 +198,9 @@ public class DrillsList {
 		}
 	}
 
+	/**
+	 * @return size of list
+	 */
 	public int size() {
 		return first.size;
 	}
