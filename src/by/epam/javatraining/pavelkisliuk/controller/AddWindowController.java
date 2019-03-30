@@ -61,20 +61,20 @@ public class AddWindowController {
 		repeats = Integer.valueOf(repeatsTextField.getText());
 		weight = Integer.valueOf(weightTextField.getText());
 		muscle = muscleComboBox.getValue();
-		statDynam = (Boolean)statRadioButton.getUserData();
-		pump = (Boolean)pumpRadioButton.getUserData();
+		statDynam = (Boolean) statRadioButton.getUserData();
+		pump = (Boolean) pumpRadioButton.getUserData();
 
 		cancel = false;
-		Node b = (Node)event.getTarget();
-		Stage stage = (Stage)b.getScene().getWindow();
+		Node b = (Node) event.getTarget();
+		Stage stage = (Stage) b.getScene().getWindow();
 		stage.close();
 	}
 
 	@FXML
 	void cancelButtonOnAction(ActionEvent event) {
 		cancel = true;
-		Node b = (Node)event.getTarget();
-		Stage stage = (Stage)b.getScene().getWindow();
+		Node b = (Node) event.getTarget();
+		Stage stage = (Stage) b.getScene().getWindow();
 		stage.close();
 	}
 
@@ -120,7 +120,7 @@ public class AddWindowController {
 	}
 
 	private void checkAllTextField() {
-		if((isCorrectInput(setTextField.getText())) &&
+		if ((isCorrectInput(setTextField.getText())) &&
 				(isCorrectInput(restTextField.getText())) &&
 				(isCorrectInput(repeatsTextField.getText())) &&
 				(isCorrectInput(weightTextField.getText()))) {

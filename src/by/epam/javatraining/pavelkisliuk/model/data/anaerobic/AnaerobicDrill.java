@@ -40,7 +40,7 @@ public class AnaerobicDrill extends AbstractDrill {
 	}
 
 	public AnaerobicDrill(String drillName, int setPerExercise, int restPeriod,
-						int necessaryRepeatNumber, int realizeRepeatNumber, int realizeRepeatNumberHelp,
+						  int necessaryRepeatNumber, int realizeRepeatNumber, int realizeRepeatNumberHelp,
 						  int workingWeight, boolean staticDynamic, boolean pumping,
 						  MusclesGroup muscleGroup) {
 		super(drillName, setPerExercise, restPeriod);
@@ -156,9 +156,9 @@ public class AnaerobicDrill extends AbstractDrill {
 	public String toString() {
 		return "	AnaerobicDrill:" +
 				"\n		Drill name =" + getDrillName() +
-				"\n		SetPerExercise =" + getSetPerExercise()  +
-				"\n		Rest period =" + getRestPeriod()  +
-				"\n		Necessary repeat number =" + necessaryRepeatNumber  +
+				"\n		SetPerExercise =" + getSetPerExercise() +
+				"\n		Rest period =" + getRestPeriod() +
+				"\n		Necessary repeat number =" + necessaryRepeatNumber +
 				"\n		Realize repeat number =" + realizeRepeatNumber +
 				"\n		Realize repeat number with help =" + realizeRepeatNumberHelp +
 				"\n		Working weight =" + workingWeight +
