@@ -38,4 +38,25 @@ public class AerobicDrill extends AbstractDrill {
 	public void setExecutionSpeed(int executionSpeed) {
 		this.executionSpeed = executionSpeed;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+
+		AerobicDrill that = (AerobicDrill) o;
+
+		if (executionTime != that.executionTime) return false;
+		return executionSpeed == that.executionSpeed;
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = super.hashCode();
+		result = 31 * result + executionTime;
+		result = 31 * result + executionSpeed;
+		return result;
+	}
 }

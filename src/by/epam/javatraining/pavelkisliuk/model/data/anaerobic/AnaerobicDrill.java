@@ -122,6 +122,37 @@ public class AnaerobicDrill extends AbstractDrill {
 	}
 
 	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+
+		AnaerobicDrill that = (AnaerobicDrill) o;
+
+		if (necessaryRepeatNumber != that.necessaryRepeatNumber) return false;
+		if (realizeRepeatNumber != that.realizeRepeatNumber) return false;
+		if (realizeRepeatNumberHelp != that.realizeRepeatNumberHelp) return false;
+		if (workingWeight != that.workingWeight) return false;
+		if (staticDynamic != that.staticDynamic) return false;
+		if (pumping != that.pumping) return false;
+		return muscleGroup == that.muscleGroup;
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = super.hashCode();
+		result = 31 * result + necessaryRepeatNumber;
+		result = 31 * result + realizeRepeatNumber;
+		result = 31 * result + realizeRepeatNumberHelp;
+		result = 31 * result + workingWeight;
+		result = 31 * result + (staticDynamic ? 1 : 0);
+		result = 31 * result + (pumping ? 1 : 0);
+		result = 31 * result + muscleGroup.hashCode();
+		return result;
+	}
+
+	@Override
 	public String toString() {
 		return "	AnaerobicDrill:" +
 				"\n		Drill name =" + getDrillName() +

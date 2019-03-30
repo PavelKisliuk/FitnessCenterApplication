@@ -31,4 +31,23 @@ public class Dancing extends AerobicDrill {
 	public void setIntensity(Intensity intensity) {
 		this.intensity = intensity;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+
+		Dancing dancing = (Dancing) o;
+
+		return intensity == dancing.intensity;
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = super.hashCode();
+		result = 31 * result + intensity.hashCode();
+		return result;
+	}
 }

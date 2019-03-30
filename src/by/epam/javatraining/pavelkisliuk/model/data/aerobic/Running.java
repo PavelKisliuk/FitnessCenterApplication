@@ -42,4 +42,25 @@ public class Running extends AerobicDrill {
 	public void setDistance(int distance) {
 		this.distance = distance;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+
+		Running running = (Running) o;
+
+		if (distance != running.distance) return false;
+		return runType == running.runType;
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = super.hashCode();
+		result = 31 * result + runType.hashCode();
+		result = 31 * result + distance;
+		return result;
+	}
 }

@@ -2,14 +2,21 @@ package by.epam.javatraining.pavelkisliuk.model.logic;
 
 import by.epam.javatraining.pavelkisliuk.model.data.aerobic.AerobicDrill;
 import by.epam.javatraining.pavelkisliuk.model.data.anaerobic.AnaerobicDrill;
+import by.epam.javatraining.pavelkisliuk.util.DrillListComparator;
 import by.epam.javatraining.pavelkisliuk.util.DrillsList;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class TrainerTest {
 
 
 	@Test
 	public void initDrillAerobic() {
+		AerobicDrill expected = new AerobicDrill("", 0, 0, 0, 0);
+		AerobicDrill drill = new AerobicDrill();
+		Trainer.initDrill(drill, "", 0, 0, 0, 0);
+		assertEquals(expected, drill);
 	}
 
 	@Test(expected = NullPointerException.class)
@@ -19,11 +26,19 @@ public class TrainerTest {
 
 	@Test(expected = NullPointerException.class)
 	public void initDrillAerobicAbstractDrillException() {
-		Trainer.initDrill(null, "", 0, 0,0,0);
+		Trainer.initDrill(null, "", 0,
+				0,0,0);
 	}
 
 	@Test
 	public void initDrillAnaerobic() {
+		AnaerobicDrill expected = new AnaerobicDrill("", 0, 0, 0,
+				0, 0, 0, false,
+				false, AnaerobicDrill.MusclesGroup.BREAST_GROUP);
+		AnaerobicDrill drill = new AnaerobicDrill();
+		Trainer.initDrill(drill, "", 0, 0,0, 0,
+				false, false, AnaerobicDrill.MusclesGroup.BREAST_GROUP);
+		assertEquals(expected, drill);
 	}
 
 	@Test(expected = NullPointerException.class)
@@ -46,6 +61,19 @@ public class TrainerTest {
 
 	@Test
 	public void exchange() {
+		DrillsList expexted = new DrillsList();
+		expexted.add(new AnaerobicDrill("2", 0, 0, 0, 0,0,0,
+				false, false, null));
+		expexted.add(new AnaerobicDrill("1", 0, 0, 0, 0,0,0,
+				false, false, null));
+
+		DrillsList list = new DrillsList();
+		list.add(new AnaerobicDrill("1", 0, 0, 0, 0,0,0,
+				false, false, null));
+		list.add(new AnaerobicDrill("2", 0, 0, 0, 0,0,0,
+				false, false, null));
+		Trainer.exchange(list, 0, 1);
+		assertTrue(DrillListComparator.compare(expexted, list));
 	}
 
 	@Test(expected = NullPointerException.class)
@@ -75,6 +103,19 @@ public class TrainerTest {
 
 	@Test
 	public void onPosition() {
+		DrillsList expexted = new DrillsList();
+		expexted.add(new AnaerobicDrill("2", 0, 0, 0, 0,0,0,
+				false, false, null));
+		expexted.add(new AnaerobicDrill("1", 0, 0, 0, 0,0,0,
+				false, false, null));
+
+		DrillsList list = new DrillsList();
+		list.add(new AnaerobicDrill("1", 0, 0, 0, 0,0,0,
+				false, false, null));
+		Trainer.onPosition(list,
+				new AnaerobicDrill("2", 0, 0, 0, 0,0,0,
+						false, false, null), 0);
+		assertTrue(DrillListComparator.compare(expexted, list));
 	}
 
 	@Test(expected = NullPointerException.class)
@@ -99,6 +140,19 @@ public class TrainerTest {
 
 	@Test
 	public void add() {
+		DrillsList expexted = new DrillsList();
+		expexted.add(new AnaerobicDrill("1", 0, 0, 0, 0,0,0,
+				false, false, null));
+		expexted.add(new AnaerobicDrill("2", 0, 0, 0, 0,0,0,
+				false, false, null));
+
+		DrillsList list = new DrillsList();
+		list.add(new AnaerobicDrill("1", 0, 0, 0, 0,0,0,
+				false, false, null));
+		Trainer.add(list,
+				new AnaerobicDrill("2", 0, 0, 0, 0,0,0,
+						false, false, null));
+		assertTrue(DrillListComparator.compare(expexted, list));
 	}
 
 	@Test(expected = NullPointerException.class)
@@ -113,6 +167,17 @@ public class TrainerTest {
 
 	@Test
 	public void remove() {
+		DrillsList expexted = new DrillsList();
+		expexted.add(new AnaerobicDrill("1", 0, 0, 0, 0,0,0,
+				false, false, null));
+
+		DrillsList list = new DrillsList();
+		list.add(new AnaerobicDrill("1", 0, 0, 0, 0,0,0,
+				false, false, null));
+		list.add(new AnaerobicDrill("2", 0, 0, 0, 0,0,0,
+				false, false, null));
+		Trainer.remove(list,1);
+		assertTrue(DrillListComparator.compare(expexted, list));
 	}
 
 	@Test(expected = NullPointerException.class)
@@ -132,6 +197,29 @@ public class TrainerTest {
 
 	@Test
 	public void show() {
+		String expected = "-------------------------------------------------------------\n" +
+				"-------------------------------------------------------------List:\n" +
+				"Drill #1\n" +
+				"\tAnaerobicDrill:\n" +
+				"\t\tDrill name =1\n" +
+				"\t\tSetPerExercise =1\n" +
+				"\t\tRest period =1\n" +
+				"\t\tNecessary repeat number =1\n" +
+				"\t\tRealize repeat number =0\n" +
+				"\t\tRealize repeat number with help =0\n" +
+				"\t\tWorking weight =1\n" +
+				"\t\tStatic-dynamic =false\n" +
+				"\t\tPumping =false\n" +
+				"\t\tMuscle group =Breast\n" +
+				"----------------------------------------------------------------------------\n" +
+				"\n" +
+				"-------------------------------------------------------------\n" +
+				"-------------------------------------------------------------end of list\n";
+
+		DrillsList list = new DrillsList();
+		list.add(new AnaerobicDrill("1", 1, 1, 1, 0,0,1,
+				false, false, AnaerobicDrill.MusclesGroup.BREAST_GROUP));
+		assertEquals(expected, Trainer.show(list));
 	}
 
 	@Test(expected = NullPointerException.class)

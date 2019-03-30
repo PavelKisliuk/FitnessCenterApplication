@@ -31,4 +31,23 @@ public class Swimming extends AerobicDrill {
 	public void setSwimType(SwimType swimType) {
 		this.swimType = swimType;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+
+		Swimming swimming = (Swimming) o;
+
+		return swimType == swimming.swimType;
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = super.hashCode();
+		result = 31 * result + swimType.hashCode();
+		return result;
+	}
 }

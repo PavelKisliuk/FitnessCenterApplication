@@ -37,4 +37,25 @@ public abstract class AbstractDrill {
 	public void setRestPeriod(int restPeriod) {
 		this.restPeriod = restPeriod;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		AbstractDrill that = (AbstractDrill) o;
+
+		if (setPerExercise != that.setPerExercise) return false;
+		if (restPeriod != that.restPeriod) return false;
+		return drillName.equals(that.drillName);
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = drillName.hashCode();
+		result = 31 * result + setPerExercise;
+		result = 31 * result + restPeriod;
+		return result;
+	}
 }
